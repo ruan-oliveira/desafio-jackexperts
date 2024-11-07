@@ -1,0 +1,11 @@
+{{- if .Values.site.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "desafio.fullname" . }}
+  labels:
+    {{- include "desafio.labels" . | nindent 4 }}
+data:
+  index.html:
+    {{- .Values.site.indexHtml | nindent 4 }}
+{{- end -}}
